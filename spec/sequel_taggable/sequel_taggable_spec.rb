@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-describe "sequel_taggable" do
+describe Sequel::Plugins::Taggable do
   before do
     @example = ExampleModel.new
   end
