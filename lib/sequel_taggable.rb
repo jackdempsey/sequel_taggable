@@ -1,14 +1,6 @@
-module Sequel
-  module Plugins
-    module Taggable
-      # Apply the plugin to the model.
-      def self.apply(model, options = {})
-        model.send(:include, InstanceMethods)
-      end
+$:.unshift(File.dirname(__FILE__)) unless
+$:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-      module InstanceMethods
-        # Define methods that will be instance-specific here.
-      end
-    end
-  end
-end
+require 'sequel_taggable/tag'
+require 'sequel_taggable/tagging'
+require 'sequel_taggable/sequel_taggable'
