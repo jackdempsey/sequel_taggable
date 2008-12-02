@@ -2,19 +2,18 @@ class CreateTags < Sequel::Migration
   def up
     create_table :tags do
       primary_key :id, :integer, :auto_increment => true
-      integer :tag_id
-      varchar :name
-
-      index :tag_id
+      varchar :name, :null => false
     end
     
     create_table :taggings do
       primary_key :id, :integer, :auto_increment => true
-      integer :taggable_id
-      varchar :taggable_type
+      integer :tag_id, :null => false
+      integer :taggable_id, :null => false
+      varchar :taggable_type, :null => false
+      varchar :tag_context, :null => false
       
       datetime :created_at
-      index [:taggable_id, :taggable_type]
+      index [:tag_id, :taggable_id, :taggable_type]
     end
   end
 
