@@ -6,12 +6,12 @@ describe Tag do
   end
 
   it "should have id and name properties" do
-    @tag.attributes.should have_key(:id)
-    @tag.attributes.should have_key(:name)
+    @tag.should respond_to(:id)
+    @tag.should respond_to(:name)
   end
 
   it "should have many Taggings" do
-    Tag.relationships.should have_key(:taggings)
+    Tag.associations.should include(:taggings)
   end
 
   it "should validate the presence of name" do
