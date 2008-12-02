@@ -3,7 +3,7 @@ class CreateTags < Sequel::Migration
     create_table :tags do
       primary_key :id, :integer, :auto_increment => true
       integer :tag_id
-      string :name
+      varchar :name
 
       index :tag_id
     end
@@ -11,7 +11,7 @@ class CreateTags < Sequel::Migration
     create_table :taggings do
       primary_key :id, :integer, :auto_increment => true
       integer :taggable_id
-      string :taggable_type
+      varchar :taggable_type
       
       datetime :created_at
       index [:taggable_id, :taggable_type]
