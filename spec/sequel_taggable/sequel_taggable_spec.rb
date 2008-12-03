@@ -2,22 +2,22 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Sequel::Plugins::Taggable do
   before do
-    @example = ExampleModel.new
+    @tagged_model = TaggedModel.new
   end
   
   it "should add a .has_tags method to models which include DataMapper::Resource" do
-    ExampleModel.should respond_to(:has_tags)
+    TaggedModel.should respond_to(:has_tags)
     # AnotherTaggedModel.should respond_to(:has_tags)
     # DefaultTaggedModel.should respond_to(:has_tags)
     # UntaggedModel.should respond_to(:has_tags)
   end
-  # 
-  # it "should add a .has_tags_on method to models which include DataMapper::Resource" do
-  #   TaggedModel.should respond_to(:has_tags_on)
+
+  it "should add a .has_tags_on method to models which include DataMapper::Resource" do
+    TaggedModel.should respond_to(:has_tags_on)
   #   AnotherTaggedModel.should respond_to(:has_tags_on)
   #   DefaultTaggedModel.should respond_to(:has_tags_on)
   #   UntaggedModel.should respond_to(:has_tags_on)
-  # end
+  end
   # 
   # describe ".has_tags_on" do
   #   it "should accept an array of context names" do

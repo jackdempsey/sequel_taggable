@@ -34,8 +34,8 @@ describe Tagging do
     @tagging.should respond_to(:taggable)
     @tagging.taggable.should_not be
     @tagging.taggable_id = 11111
-    @tagging.taggable_type = "ExampleModel"
-    ExampleModel.should_receive(:get!).with(11111)
+    @tagging.taggable_type = "TaggedModel"
+    TaggedModel.should_receive(:get!).with(11111)
     @tagging.taggable
   end
 end

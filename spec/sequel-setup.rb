@@ -6,7 +6,7 @@ CreateTags.apply(DB, :up)
 #DB["select * from sqlite_master"].print
 
 
-class ExampleModel < Sequel::Model
+class TaggedModel < Sequel::Model
   set_schema do
     primary_key :id
     varchar :name
@@ -15,4 +15,4 @@ class ExampleModel < Sequel::Model
   is :taggable
 end
 
-ExampleModel.create_table!
+TaggedModel.create_table!
