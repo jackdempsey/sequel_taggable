@@ -18,15 +18,14 @@ describe Sequel::Plugins::Taggable do
   #   DefaultTaggedModel.should respond_to(:has_tags_on)
   #   UntaggedModel.should respond_to(:has_tags_on)
   end
-  # 
-  # describe ".has_tags_on" do
-  #   it "should accept an array of context names" do
-  #     class HasTagsOnTestModel
-  #       include DataMapper::Resource
-  #       property :id, Integer, :serial => true
-  #     end
-  #     lambda{HasTagsOnTestModel.has_tags_on(:should, 'not', :raise)}.should_not raise_error(ArgumentError)
-  #   end
+
+  describe ".has_tags_on" do
+    it "should accept an array of context names" do
+      class HasTagsOnTestModel < Sequel::Model
+        is :taggable
+      end
+      lambda{HasTagsOnTestModel.has_tags_on(:should, 'not', :raise)}.should_not raise_error(ArgumentError)
+    end
   # 
   #   it "should create taggable functionality for each of the context names passed" do
   #     class TestModel
@@ -67,5 +66,5 @@ describe Sequel::Plugins::Taggable do
   #     a.should_not respond_to(:skill_list=)
   #     a.should_not respond_to(:skills)
   #   end
-  # end
+  end
 end
