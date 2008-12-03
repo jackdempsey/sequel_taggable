@@ -31,7 +31,8 @@ module Sequel
           klass.has_tags
         end
         
-        def has_tags
+        def has_tags(*args)
+          raise "has_tags takes no arguments, use 'has_tags_on :#{args.first}, ...' instead" unless args.empty?
           has_tags_on :tags
         end
 

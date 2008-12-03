@@ -30,7 +30,7 @@ describe Sequel::Plugins::Taggable do
     it "should create taggable functionality for each of the context names passed" do
       class TestModel < Sequel::Model
         is :taggable
-        has_tags_on(:pets, 'skills', :tags)
+        has_tags_on :pets, 'skills', :tags
       end
       TestModel.should be_taggable
       a = TestModel.new
@@ -43,26 +43,15 @@ describe Sequel::Plugins::Taggable do
       a.should respond_to(:tag_list=)
     end
   end
-  # 
-  # describe ".has_tags" do
-  #   it "should create a taggable with 'tags' context regardless of passed arguments" do
-  #     class TagsOnly
-  #       include DataMapper::Resource
-  #       property :id, Integer, :serial => true
-  #       has_tags :pets, :skills
-  #     end
-  #     TagsOnly.should be_taggable
-  #     TagsOnly.new.should be_taggable
-  #     a = TagsOnly.new
-  #     a.should respond_to(:tag_list)
-  #     a.should respond_to(:tag_list=)
-  #     a.should respond_to(:tags)
-  #     a.should_not respond_to(:pet_list)
-  #     a.should_not respond_to(:pet_list=)
-  #     a.should_not respond_to(:pets)
-  #     a.should_not respond_to(:skill_list)
-  #     a.should_not respond_to(:skill_list=)
-  #     a.should_not respond_to(:skills)
-  #   end
-  #end
+  
+  describe ".has_tags" do
+    it "should raise an error message if someone uses has_tags with an argument list" do
+      lambda do 
+        class TagsOnly < Sequel::Model
+          is :taggable
+          has_tags :pets, :skills
+        end
+      end.should raise_error(RuntimeError)
+    end
+  end
 end
