@@ -26,25 +26,23 @@ describe Sequel::Plugins::Taggable do
       end
       lambda{HasTagsOnTestModel.has_tags_on(:should, 'not', :raise)}.should_not raise_error(ArgumentError)
     end
-  # 
-  #   it "should create taggable functionality for each of the context names passed" do
-  #     class TestModel
-  #       include DataMapper::Resource
-  #       property :id, Integer, :serial => true
-  # 
-  #       has_tags_on(:pets, 'skills', :tags)
-  #     end
-  #     TestModel.should be_taggable
-  #     a = TestModel.new
-  #     a.should be_taggable
-  #     a.should respond_to(:pet_list)
-  #     a.should respond_to(:skill_list)
-  #     a.should respond_to(:tag_list)
-  #     a.should respond_to(:pet_list=)
-  #     a.should respond_to(:skill_list=)
-  #     a.should respond_to(:tag_list=)
-  #   end
-  # end
+
+    it "should create taggable functionality for each of the context names passed" do
+      class TestModel < Sequel::Model
+        is :taggable
+        has_tags_on(:pets, 'skills', :tags)
+      end
+      TestModel.should be_taggable
+      a = TestModel.new
+      a.should be_taggable
+      a.should respond_to(:pet_list)
+      a.should respond_to(:skill_list)
+      a.should respond_to(:tag_list)
+      a.should respond_to(:pet_list=)
+      a.should respond_to(:skill_list=)
+      a.should respond_to(:tag_list=)
+    end
+  end
   # 
   # describe ".has_tags" do
   #   it "should create a taggable with 'tags' context regardless of passed arguments" do
@@ -66,5 +64,5 @@ describe Sequel::Plugins::Taggable do
   #     a.should_not respond_to(:skill_list=)
   #     a.should_not respond_to(:skills)
   #   end
-  end
+  #end
 end
