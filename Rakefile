@@ -24,11 +24,11 @@ spec = Gem::Specification.new do |s|
   s.homepage = HOMEPAGE
   
   # Uncomment this to add a dependency
-  # s.add_dependency "foo"
+  s.add_dependency "sequel_polymorphic"
   
   s.require_path = 'lib'
   s.autorequire = GEM
-  s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
+  s.files = %w(LICENSE README.markdown Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
 end
 
 task :default => :spec
