@@ -1,0 +1,42 @@
+= Sequel::Taggable
+
+A simple plugin for Sequel::Model's that lets you work with tags. To use simply declare "is :taggable" in your model.
+
+== Example
+
+For easy cut & paste testing, here's a setup for an irb session. You can find the same schema Sequel::Taggable uses in sequel_taggable/migration.rb
+
+require 'rubygems'
+require 'sequel'
+
+DB = Sequel.sqlite
+
+require 'sequel_taggable/migration'
+
+CreateTags.apply(DB, :up)
+
+class Article < Sequel::Model
+  set_schema do
+    primary_key :id
+    varchar :name
+  end
+  
+  is :taggable
+end
+
+Article.create_table
+
+a = Article.create(:name => "Example article")
+
+t = Tag.create(:name => "tag one")
+
+a.add_tag(t)
+
+pp Tagging.all
+
+
+
+
+
+
+

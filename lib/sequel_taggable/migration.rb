@@ -12,7 +12,7 @@ class CreateTags < Sequel::Migration
       varchar :taggable_type, :null => false
       #varchar :tag_context, :null => false
       
-      datetime :created_at
+      #datetime :created_at #TODO decide on using is_timestamped plugin to autofill this
       index [:tag_id, :taggable_id, :taggable_type]
     end
   end
