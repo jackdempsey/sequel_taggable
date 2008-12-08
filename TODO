@@ -1,4 +1,4 @@
-TODO:
-Fix LICENSE with your name
-Fix Rakefile with your name and contact info
-Add your code to lib/<%= name %>.rb
+Add in more advanced capabilities
+  - add/remove multiple tags at once
+
+Look into adding something like dm-tags context so you have a list of tags as well as skills and other things
