@@ -10,7 +10,7 @@ class CreateTags < Sequel::Migration
       integer :tag_id, :null => false
       integer :taggable_id, :null => false
       varchar :taggable_type, :null => false
-      varchar :tag_context, :null => false
+      #varchar :tag_context, :null => false
       
       datetime :created_at
       index [:tag_id, :taggable_id, :taggable_type]
