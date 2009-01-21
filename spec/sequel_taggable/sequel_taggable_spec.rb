@@ -12,12 +12,15 @@ describe Sequel::Plugins::Taggable do
     end
     
     it "should respond to tag methods" do
-      pending
-
       @taggable.should respond_to(:tags)
       @taggable.should respond_to(:add_tag)
       @taggable.should respond_to(:remove_tag)
       @taggable.should respond_to(:remove_all_tags)  
+    end
+    
+    it "should create tags and taggings associations" do
+      TaggableTestModel.associations.should include(:tags)
+      TaggableTestModel.associations.should include(:taggings)
     end
     
   end
